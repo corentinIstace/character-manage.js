@@ -1,0 +1,33 @@
+//import reset
+@import 'component/reset.scss';
+
+//import color 
+@import "component/color.scss";
+
+//import card
+@import "component/card.scss";
+
+//import mixin 
+@import "mixin.scss";
+
+// import Main/mobile
+@import 'footer/mobile.scss';
+@import 'header/mobile.scss';
+@import 'main/mobile.scss';
+
+
+
+// import Main/tablet 
+@media (min-width:700px){
+@import 'footer/tablet.scss';
+@import 'header/tablet.scss';
+@import 'main/tablet.scss';
+}
+
+// importe Main/desktop
+@media (min-width:1025px){
+@import 'footer/Desktop.scss';
+@import 'header/Desktop.scss';
+@import 'main/desktop.scss';
+
+}
