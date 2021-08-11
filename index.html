@@ -9,10 +9,37 @@
 </head>
 <body>
     <header id ="header">
-
+        <h1>Character Manager</h1>
+        <input type="search" id="search" placeholder="Search Character">
+        <hr color="black" width="90%" >
     </header>
     <main id ="main">
-        
+        <article class="card">
+            <template id="tpl-character">
+                <li>
+                    <img src="" id="character-img">
+                </li>
+                <li>
+                    <h4 class="character-name"></h4>
+                </li>
+                <li>
+                <p class="character-description"></p>
+                </li>
+                <li>
+                    <button class="character-button">See character</button>
+                </li>
+            </template>
+        <ol id="target1"></ol>
+        <ol id="target2"></ol>
+        <ol id="target3"></ol>
+        <ol id="target4"></ol>
+        <ol id="target5"></ol>
+        <ol id="target6"></ol>
+        <ol id="target7"></ol>
+        <ol id="target8"></ol>
+
+        </article>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
