@@ -39,21 +39,12 @@
 
   saveChangeBtn.addEventListener("click", async () => {
      if (document.getElementById('test').innerHTML == ""  ||  document.getElementById('name').value == "" ||   document.getElementById('shortDescription').value == "" || document.getElementById('description').value == "") {
-         
+      let heroName = document.getElementById('name').value
+      let heroShortDesc = document.getElementById('shortDescription').value
+      let heroDesc=document.getElementById('description').value
+      let img = document.getElementById('test').innerHTML 
+      
      
-    
-            
-     
-
-            
-            
-
-
-
-
-
-
-
      }
      else {
          console.log("non") 
