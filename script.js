@@ -55,7 +55,7 @@
          let img = document.getElementById('test').innerHTML 
       
                           
-            const data = { heroDesc:`${heroDesc}`, shortDescription :`${heroShortDesc}`   ,name:`${heroName}` ,   img : `${img}` };
+            const data = { heroDesc:`${heroDesc}`, shortDescription :`${heroShortDesc}`   ,name:`${heroName}` ,   image : `${img}` };
             console.log(data) 
             let response = await fetch("https://character-database.becode.xyz/characters",{ 
                 method: 'POST', // or 'PUT'
