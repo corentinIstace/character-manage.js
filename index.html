@@ -14,33 +14,33 @@
     <main id ="main">
         <article class="card">
             <div class="card__header">
-              <figure class="card__figure">
-                <img src="https://satyr.io/400x200?text=card__image" alt="" class="card__image">
-              </figure>
+                <form id="formElem">
+                    <img id="blah" src="#" alt="your image" width="150" height="150"/><br/>
+                    <input type="file" name="picture" accept="image/*" id="imgInp" >
+                  </form>
             </div>
             <div class="card__body">
-              <h2 class="card__title">Card Title</h2>
-              <h3 class="card__subtitle">
-                Card Subtitle
-              </h3>
-              <p class="card__copy">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis sint perspiciatis
-                deleniti ab possimus ut? Ducimus fugiat hic velit necessitatibus. Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Repellendus sapiente harum soluta excepturi ut
-                temporibus, at amet corporis id asperiores.
-              </p>
+
+              <div class="input-group">
+                  <input type="text" id="name" name="name" value="" form="formElem"><br/>
+                <textarea id="shortDescription"  name="shortDescription" rows="1" cols="30"></textarea><br/>
+                <textarea id ="description" name="description" rows="30" cols="30"></textarea><br/>
+              </div>
             </div>
             <footer class="card__footer">
               <div class="card__actions">
-                <button class="button save">
+                <button id="save" class="button save">
                   Save changes 
                 </button>
-                <button class="button delete">
+                <button id="delete" class="button delete">
                     Delete character 
                   </button>
               </div>
+
+              <p id ="test"></p>
             </footer>
           </article>
     </main>
+    <script type='module' src='script.js'></script>
 </body>
 </html>
