@@ -70,7 +70,14 @@
   })
 
 
-  
+  document.getElementById("delete").addEventListener("click",()=> {
+    fileInput.value ="";
+    blah.src ="#"
+    document.getElementById('name').value = "" 
+    document.getElementById('shortDescription').value = "" 
+    document.getElementById('description').value = ""
+
+  } )
 
   
 
