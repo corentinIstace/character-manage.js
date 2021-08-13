@@ -1,23 +1,7 @@
 ( async () => {
-    // SEARCH BAR //
     
-    const search = document.getElementById("search");
-search.addEventListener("keyup", function() {
-    const input = search.value;
-    
-    let names =[]
-    characters.forEach(character =>{
-        names.push(character.name) 
-        // inclure ds le tableau
-    });
-    // console.log(names)
-    let result = names.filter((name) => {
-        return name.includes(input)
-    });
-    console.log(result);
-}); 
     // CHARACTER'S TEMPLATE //
-
+    
     const response = await fetch("https://character-database.becode.xyz/characters");
     const characters = await response.json();
     // console.log(characters);
@@ -32,40 +16,54 @@ search.addEventListener("keyup", function() {
         clone.querySelector("#character-name").innerHTML = character.name;
         clone.querySelector("#character-shortDescription").innerHTML = character.shortDescription;
         clone.querySelector("#character-description").innerHTML = character.description;
+        clone.querySelector("#character-id").innerHTML = character.id;
         
         target.appendChild(clone);
     });
-})();
-
-
-// const displayCharacter = (characters) => {
-//     return characters.map((character) => {
-//         let arrayName = Array(character.name)
-//         console.log(arrayName);
-//         arrayName.forEach(name => {
-//             name.filter(name => {
-//                 name.includes(input)
-//             })
-//         })
-//     })
-// }
-// displayCharacter(characters);
-// // console.log(displayCharacter);
-
-        // for( character of characters) {
-        //     const persons = Array(character.name)  
-        //     // console.log(persons);
     
-        //     let result = persons.forEach(person => {
-        //             person.filter(person => {
-        //                 person.name.includes(input);
-        //         })
-        //         console.log(result);
-        //     });
-// console.log(input)
+    // SEARCH BAR //
+    
+    search.addEventListener("keyup", function() {
+    const search = document.getElementById("search");
+    const input = search.value;
+    
+    let names =[]
+    characters.forEach(character =>{
+    names.push(character.name) 
+    });
+    // console.log(names)
+    // creer un tableau et y inclure tous les noms des characters présent dans l'API du même nom
+    let result = names.filter((name) => {
+        return name.includes(input)
+    });
+    console.log(result);
+    // filtre les noms du tableau creer ci-dessus afin de ne retourner que les noms comportant le ou les carractères
+    // rentrés par l'utilisateur dans l'input
+    let suggestion = "";
+    if (input != ""){
+    result.forEach(resultName=> 
+    suggestion += `<div id ="suggestion">${resultName}</div>`
+    )};
+    document.getElementById("suggestion").innerHTML = suggestion;
+    // si l'utilisateur écrit dans l'input, il aura des propositions de characters ayant dans leur nom les 
+    // carractères qu'il aura tapé, celles-ci seront écrites dans l'élément html "suggestion"
+    if (input != ""){
+        const displayCharacters = (characters) => {
+            console.log(characters);
+            let show =characters.map((characters) =>{
+                return characters; 
+            })
+            document.getElementById("target").innerHTML = show;
+        }
+        displayCharacters(result);
+    }
+    
+    });
+    
+    
+})();
+// SINGLE CHARACTER // 
 
-//    let arrayName = Array (name);
-//    console.log(arrayName);  
 
 
 
