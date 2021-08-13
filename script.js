@@ -38,10 +38,10 @@
   });
 
   saveChangeBtn.addEventListener("click", async () => {
-     if (document.getElementById('test').innerHTML == ""  ||  document.getElementById('name').value == "" ||   document.getElementById('shortDescription').value == "" || document.getElementById('editor-container').innerHTML == "") {
+     if (document.getElementById('test').innerHTML == ""  ||  document.getElementById('name').value == "" ||   document.getElementById('shortDescription').value == "" || document.getElementById('editor-container').innerText == "") {
       let heroName = document.getElementById('name').value
       let heroShortDesc = document.getElementById('shortDescription').value
-      let heroDesc=document.getElementById('editor-container').innerHTML
+      let heroDesc=document.getElementById('editor-container').innerText
       let img = document.getElementById('test').innerHTML 
       
      
@@ -51,7 +51,7 @@
          
          let heroName = document.getElementById('name').value
          let heroShortDesc = document.getElementById('shortDescription').value
-         let heroDesc=document.getElementById('editor-container').innerHTML
+         let heroDesc=document.getElementById('editor-container').innerText
          let img = document.getElementById('test').innerHTML 
       
                           
@@ -75,7 +75,7 @@
     blah.src ="#"
     document.getElementById('name').value = "" 
     document.getElementById('shortDescription').value = "" 
-    document.getElementById('editor-container').innerHTML = ""
+    document.getElementById('editor-container').innerText = ""
 
   } )
 
