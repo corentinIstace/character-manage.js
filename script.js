@@ -39,8 +39,9 @@
      let response = await fetch(`https://character-database.becode.xyz/characters/${id}`);
      let character = await response.json();
 
-     console.log(character)
+     console.log(character.name, character.description, `data:image/JPEG;base64,${character.image}` ,character.shortDescription)
     document.getElementById("lol").innerHTML = character.name ;
+    
     
   }); 
 
