@@ -38,10 +38,10 @@
   });
 
   saveChangeBtn.addEventListener("click", async () => {
-     if (document.getElementById('test').innerHTML == ""  ||  document.getElementById('name').value == "" ||   document.getElementById('shortDescription').value == "" || document.getElementById('description').value == "") {
+     if (document.getElementById('test').innerHTML == ""  ||  document.getElementById('name').value == "" ||   document.getElementById('shortDescription').value == "" || document.getElementById('editor-container').innerHTML == "") {
       let heroName = document.getElementById('name').value
       let heroShortDesc = document.getElementById('shortDescription').value
-      let heroDesc=document.getElementById('description').value
+      let heroDesc=document.getElementById('editor-container').innerHTML
       let img = document.getElementById('test').innerHTML 
       
      
@@ -51,7 +51,7 @@
          
          let heroName = document.getElementById('name').value
          let heroShortDesc = document.getElementById('shortDescription').value
-         let heroDesc=document.getElementById('description').value
+         let heroDesc=document.getElementById('editor-container').innerHTML
          let img = document.getElementById('test').innerHTML 
       
                           
@@ -75,18 +75,40 @@
     blah.src ="#"
     document.getElementById('name').value = "" 
     document.getElementById('shortDescription').value = "" 
-    document.getElementById('description').value = ""
+    document.getElementById('editor-container').innerHTML = ""
 
   } )
 
   
 
 
-  
+  /*
 
+  saveChangeBtn.addEventListener("click", async() => {
+       
+    fetch(`https://character-database.becode.xyz/characters?name=jeremie`, {
+        method: 'DELETE',
+      })
+      .then(res => console.log(res.json())) 
+      .then(res => console.log(res))  
+    
 
+    })*/
 
+    
+   
 
+    var quill = new Quill('#editor-container', {
+      modules: {
+        toolbar: [
+          ['bold', 'italic'],
+          ['link', 'blockquote', 'code-block', 'image'],
+          [{ list: 'ordered' }, { list: 'bullet' }]
+        ]
+      },
+      placeholder: 'Compose an epic...',
+      theme: 'snow'
+    });
 
 
 
