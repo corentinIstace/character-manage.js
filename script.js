@@ -40,8 +40,13 @@
      let character = await response.json();
 
      console.log(character.name, character.description, `data:image/JPEG;base64,${character.image}` ,character.shortDescription)
-    document.getElementById("lol").innerHTML = character.name ;
-    
+    document.getElementById("card").style.display ="block"
+    blah.src = `data:image/JPEG;base64,${character.image}`;
+    document.getElementById("name").value = `${character.name}`;
+    shortDescription.value = `${character.shortDescription}`;
+
+
+
     
   }); 
 
@@ -108,7 +113,7 @@
   
 
 
-/*
+
 const fileInput = document.querySelector("input");
 const saveChangeBtn = document.getElementById('save')
  var x = ""
@@ -163,7 +168,7 @@ saveChangeBtn.addEventListener("click", async () => {
           const data = { description:`${heroDesc}`, shortDescription :`${heroShortDesc}`   ,name:`${heroName}` ,   image : `${img}` };
           console.log(data) 
           let response = await fetch("https://character-database.becode.xyz/characters",{ 
-              method: 'POST', // or 'PUT'
+              method: 'PUT',
               headers: {
                   'Content-Type': 'application/json',
               },
