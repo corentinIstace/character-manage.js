@@ -341,4 +341,11 @@ html {
   font-size: 62.5%;
 }
 
+@media (min-width: 1025px) {
+  .ql-align {
+    color: grey;
+    opacity: 0.6;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

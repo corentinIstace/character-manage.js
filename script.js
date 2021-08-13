@@ -80,6 +80,57 @@
   } )
 
   
+const countName =  ()=> {
+  
+  let nameval = document.getElementById('name').value
+ 
+  console.log(nameval)
+
+  
+  contentLen.innerHTML = `${nameval.length} on max 20 char`; 
+ 
+}
+
+const countSDesc =  ()=> {
+  
+  let shortde = document.getElementById('shortDescription').value 
+  console.log(shortde)
+  shortdesctLen.innerHTML = `${shortde.length} on max 70 char`;
+ 
+}
+
+const countDesc =  ()=> {
+  
+  let de = document.querySelector(".ql-editor").innerText 
+  
+  console.log(de)
+  desctLen.innerHTML = `${de.length} on max 350 char`;
+}
+
+ var quill = new Quill('#editor-container', {
+      modules: {
+        toolbar: [
+          ['bold', 'italic','strike'],
+          [ 'blockquote'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          [{ align: '' }  , { align: 'center' } , { align: 'right' }   ],
+        ]
+      },
+      placeholder: 'Compose an epic...',
+      theme: 'snow'
+    });
+
+
+
+document.getElementById('name').addEventListener("input",countName)
+document.getElementById('shortDescription').addEventListener("input",countSDesc)
+document.querySelectorAll(".ql-editor")[0].addEventListener("input",countDesc)
+
+
+
+
+
+
 
 
   /*
@@ -98,18 +149,7 @@
     
    
 
-    var quill = new Quill('#editor-container', {
-      modules: {
-        toolbar: [
-          ['bold', 'italic'],
-          ['link', 'blockquote', 'code-block', 'image'],
-          [{ list: 'ordered' }, { list: 'bullet' }]
-        ]
-      },
-      placeholder: 'Compose an epic...',
-      theme: 'snow'
-    });
-
+   
 
 
 

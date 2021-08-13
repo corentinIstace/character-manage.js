@@ -24,9 +24,10 @@
             <div class="card__body">
 
               <div class="input-group">
-                  <input type="text" id="name" name="name" value="" form="formElem"><br/>
-                <textarea id="shortDescription"  name="shortDescription" rows="1" cols="30"></textarea><br/>
-                <div id="editor-container"></div>
+                
+                  <input type="text" id="name" name="name" value="" maxlength="20"form="formElem"><span id="contentLen">0 on max 20 char</span><br/>
+                <textarea id="shortDescription"  name="shortDescription" maxlength="70" rows="1" cols="30"></textarea><span id="shortdesctLen">0 on max 70 char</span><br/>
+                <div id="editor-container"></div><span id="desctLen">0 on max 350 char</span>
               </div>
             </div>
             <footer class="card__footer">
