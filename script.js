@@ -78,7 +78,18 @@
     document.querySelector(".ql-editor").innerHTML = ""
 
   } )
-
+ var quill = new Quill('#editor-container', {
+      modules: {
+        toolbar: [
+          ['bold', 'italic','strike'],
+          [ 'blockquote'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          [{ align: '' }  , { align: 'center' } , { align: 'right' }   ],
+        ]
+      },
+      placeholder: 'Compose an epic...',
+      theme: 'snow'
+    });
   
 const countName =  ()=> {
   
@@ -107,18 +118,7 @@ const countDesc =  ()=> {
   desctLen.innerHTML = `${de.length} on max 350 char`;
 }
 
- var quill = new Quill('#editor-container', {
-      modules: {
-        toolbar: [
-          ['bold', 'italic','strike'],
-          [ 'blockquote'],
-          [{ list: 'ordered' }, { list: 'bullet' }],
-          [{ align: '' }  , { align: 'center' } , { align: 'right' }   ],
-        ]
-      },
-      placeholder: 'Compose an epic...',
-      theme: 'snow'
-    });
+
 
 
 
