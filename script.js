@@ -31,8 +31,13 @@
       }
   }
   
+
+  
+
+  // character button 
   var ar_coins = document.querySelectorAll("#character-button");
   addEventListenerList(ar_coins, 'click', async  (e) => {
+
       let kik = e.currentTarget.parentNode ; 
       let id = kik.children[4].innerHTML
      console.log(id)
@@ -44,9 +49,11 @@
     blah.src = `data:image/JPEG;base64,${character.image}`;
     document.getElementById("name").value = `${character.name}`;
     shortDescription.value = `${character.shortDescription}`;
-    document.querySelector(".ql-editor").innerText =`${character.description}`;
+    document.querySelector(".ql-editor").innerHTML =`${character.description}`;
     document.querySelector("input").value = character.image;
-
+    document.getElementById("tester").innerHTML  = id;
+    put () 
+    deleted ()
 
 
     
@@ -108,38 +115,78 @@
 // udapte 
   
 
-const fileInput = document.querySelector("input");
-const saveChangeBtn = document.getElementById('save')
- var x = ""
+const fileInput = document.getElementById('imgInp');
+console.log(fileInput)
+  const saveChangeBtn = document.getElementById('save')
+   var x = ""
 
-fileInput.addEventListener("change",  (e) => {
+  fileInput.addEventListener("change",  (e) => {
+  
+    
+    const file = e.target.files[0];
+    console.log(file)
+    const reader = new FileReader();
+   
+    
+    reader.onloadend = () => {
+    
+   
+    
+    
+    const base64String = reader.result
+      .replace("data:", "")
+      .replace(/^.+,/, "");
+      // Put the url into the img atribute 
+      blah.src = reader.result
+      console.log("ok")
+       document.getElementById('test').innerHTML = `${base64String}` ;
+      
+    
+      
+    };
+    reader.readAsDataURL(file);
+    
+   
+  });
+  // save change button paramaters put method 
+  function put () {
 
-  
-  const file = e.target.files[0];
-  console.log(file)
-  const reader = new FileReader();
- 
-  
-  reader.onloadend = () => {
-  
- 
-  
-  
-  const base64String = reader.result
-    .replace("data:", "")
-    .replace(/^.+,/, "");
-    // Put the url into the img atribute 
-    document.getElementById("blah").src = reader.result
+    saveChangeBtn.addEventListener("click", async () => {
+      
+         
+           console.log("put") 
+           
+           let heroName = document.getElementById('name').value
+           let heroShortDesc = document.getElementById('shortDescription').value
+           let heroDesc=document.querySelector(".ql-editor").innerHTML
+           let img = blah.src .replace("data:", "")
+           .replace(/^.+,/, "");
+
+          let id = document.getElementById("tester").innerHTML
+                            
+              const data = { description:`${heroDesc}`, shortDescription :`${heroShortDesc}`   ,name:`${heroName}` ,   image : `${img}` };
+              console.log(data) 
+              let response = await fetch(`https://character-database.becode.xyz/characters/${id}`,{ 
+                  method: 'PUT',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data),
+                  });
+              let jsonans = await  response.json();  
+              console.log(jsonans) 
+       
+    })
     
-     document.getElementById('test').innerHTML = `${base64String}` ;
     
-  
     
-  };
-  reader.readAsDataURL(file);
-  
- 
-});
+    }
+    
+
+  // save change button paramaters post method 
+
+
+function post () {
 
 saveChangeBtn.addEventListener("click", async () => {
    if (document.getElementById('test').innerHTML == ""  ||  document.getElementById('name').value == "" ||   document.getElementById('shortDescription').value == "" || document.querySelector(".ql-editor").innerHTML == "") {
@@ -151,18 +198,19 @@ saveChangeBtn.addEventListener("click", async () => {
    console.log('recommence')
    }
    else {
+     
        console.log("non") 
        
        let heroName = document.getElementById('name').value
        let heroShortDesc = document.getElementById('shortDescription').value
        let heroDesc=document.querySelector(".ql-editor").innerHTML
        let img = document.getElementById('test').innerHTML 
-    
+      let id = document.getElementById("tester").innerHTML
                         
           const data = { description:`${heroDesc}`, shortDescription :`${heroShortDesc}`   ,name:`${heroName}` ,   image : `${img}` };
           console.log(data) 
-          let response = await fetch("https://character-database.becode.xyz/characters",{ 
-              method: 'PUT',
+          let response = await fetch(`https://character-database.becode.xyz/characters`,{ 
+              method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
               },
@@ -174,14 +222,58 @@ saveChangeBtn.addEventListener("click", async () => {
 })
 
 
-document.getElementById("delete").addEventListener("click",()=> {
+
+}
+
+// delete a character
+
+function deleted () {
+  document.getElementById("delete").addEventListener("click",async ()=> {
+
+    console.log("delete") 
+           
+    let heroName = document.getElementById('name').value
+    let heroShortDesc = document.getElementById('shortDescription').value
+    let heroDesc=document.querySelector(".ql-editor").innerHTML
+    let img = blah.src .replace("data:", "")
+    .replace(/^.+,/, "");
+
+   let id = document.getElementById("tester").innerHTML
+                     
+       const data = { description:`${heroDesc}`, shortDescription :`${heroShortDesc}`   ,name:`${heroName}` ,   image : `${img}` };
+       console.log(data) 
+       let response = await fetch(`https://character-database.becode.xyz/characters/${id}`,{ 
+           method: 'DELETE',
+           headers: {
+               'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(data),
+           });
+       let jsonans = await  response.json();  
+       console.log(jsonans) 
+   
+  
+  } )
+
+}
+
+//  reinitialise a character 
+
+function clear () {
+  document.getElementById("delete").addEventListener("click",()=> {
+
+  
   fileInput.value ="";
   blah.src ="#"
   document.getElementById('name').value = "" 
   document.getElementById('shortDescription').value = "" 
   document.querySelector(".ql-editor").innerHTML = ""
+  document.getElementById("card").style.display ="none"
 
 } )
+}
+
+
 var quill = new Quill('#editor-container', {
     modules: {
       toolbar: [
@@ -236,22 +328,13 @@ document.querySelectorAll(".ql-editor")[0].addEventListener("input",countDesc)
 
 document.getElementById("main-adding").addEventListener("click" ,() => {
   document.getElementById("card").style.display ="block"
+  post ()
+  clear() 
 })
 
 
 
-/*
 
-saveChangeBtn.addEventListener("click", async() => {
-     
-  fetch(`https://character-database.becode.xyz/characters?name=jeremie`, {
-      method: 'DELETE',
-    })
-    .then(res => console.log(res.json())) 
-    .then(res => console.log(res))  
-  
-
-  })*/
 
   
  
