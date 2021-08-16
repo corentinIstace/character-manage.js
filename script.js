@@ -38,31 +38,74 @@
   var ar_coins = document.querySelectorAll("#character-button");
   addEventListenerList(ar_coins, 'click', async  (e) => {
 
+    // delete all displayed card 
+    for (var i = 0, len = document.querySelectorAll("#character-button").length; i < len; i++) {
+      document.querySelectorAll("#character-button")[i].parentNode.style.display ="none" 
+    }
+
       let kik = e.currentTarget.parentNode ; 
       let id = kik.children[4].innerHTML
      console.log(id)
      let response = await fetch(`https://character-database.becode.xyz/characters/${id}`);
      let character = await response.json();
+     document.querySelector(".single-page").style.display ="block"
+     bla.src = `data:image/JPEG;base64,${character.image}`;
+     document.querySelector(".card__title").innerHTML = `${character.name}`;
+     document.querySelector(".card__subtitle").innerHTML = `${character.shortDescription}`;
+     document.querySelector(".card__copy").innerHTML = `${character.description}`;
+     document.getElementById("tester").innerHTML = id ;
+     document.getElementById("delete-single").addEventListener("click",  async ()=> {
 
-     console.log(character.name, character.description, `data:image/JPEG;base64,${character.image}` ,character.shortDescription)
-    document.getElementById("card").style.display ="block"
-    blah.src = `data:image/JPEG;base64,${character.image}`;
-    document.getElementById("name").value = `${character.name}`;
-    shortDescription.value = `${character.shortDescription}`;
-    document.querySelector(".ql-editor").innerHTML =`${character.description}`;
-    document.querySelector("input").value = character.image;
-    document.getElementById("tester").innerHTML  = id;
-    put () 
-    deleted ()
+    console.log("delete-single") 
+           
+   
+
+   let id = document.getElementById("tester").innerHTML
+                     
+       
+       let response = await fetch(`https://character-database.becode.xyz/characters/${id}`,{ 
+           method: 'DELETE',
+           headers: {
+               'Content-Type': 'application/json',
+           },
+           
+           });
+       let jsonans = await  response.json();  
+       console.log(jsonans) 
+       location.reload();    
+  
+  } )
+
+    document.getElementById("udapte").addEventListener("click",() => {
+      document.querySelector(".single-page").style.display ="none";
+      console.log(character.name, character.description, `data:image/JPEG;base64,${character.image}` ,character.shortDescription)
+      document.getElementById("card").style.display ="block"
+      blah.src = `data:image/JPEG;base64,${character.image}`;
+      document.getElementById("name").value = `${character.name}`;
+      shortDescription.value = `${character.shortDescription}`;
+      document.querySelector(".ql-editor").innerHTML =`${character.description}`;
+      document.querySelector("input").value = character.image;
+      document.getElementById("tester").innerHTML  = id;
+      put () 
+      deleted ()
+    })
+   
 
 
     
   }); 
 
-      /*.addEventListener("click", (e) => {
-        console.log(e.target.id) 
-     })*/ 
-    
+
+  
+   
+  
+       
+
+
+
+
+
+
     // SEARCH BAR //
     
     search.addEventListener("keyup", function() {
@@ -175,6 +218,7 @@ console.log(fileInput)
                   });
               let jsonans = await  response.json();  
               console.log(jsonans) 
+              location.reload();
        
     })
     
@@ -218,12 +262,21 @@ saveChangeBtn.addEventListener("click", async () => {
               });
           let jsonans = await  response.json();  
           console.log(jsonans) 
+          location.reload();
    }
 })
 
 
 
 }
+// delete single character
+
+ 
+
+
+
+
+
 
 // delete a character
 
@@ -251,7 +304,7 @@ function deleted () {
            });
        let jsonans = await  response.json();  
        console.log(jsonans) 
-   
+       location.reload();    
   
   } )
 
@@ -328,6 +381,10 @@ document.querySelectorAll(".ql-editor")[0].addEventListener("input",countDesc)
 
 document.getElementById("main-adding").addEventListener("click" ,() => {
   document.getElementById("card").style.display ="block"
+  for (var i = 0, len = document.querySelectorAll("#character-button").length; i < len; i++) {
+    document.querySelectorAll("#character-button")[i].parentNode.style.display ="none" 
+  }
+  document.getElementById("main-adding").style.display ="none"
   post ()
   clear() 
 })
