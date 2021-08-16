@@ -5,10 +5,8 @@
     const response = await fetch("https://character-database.becode.xyz/characters");
     const characters = await response.json();
     // console.log(characters);
-    
-    characters.forEach((character) => {
-        
-    let showCharacter = () =>{
+
+    let showCharacter = (character) =>{
 
         let template = document.getElementById("tpl-character");
         let target = document.getElementById("target");
@@ -18,12 +16,14 @@
         clone.querySelector("#character-img").src = `data:image/JPEG;base64,${character.image}`;
         clone.querySelector("#character-name").innerHTML = character.name;
         clone.querySelector("#character-shortDescription").innerHTML = character.shortDescription;
-        clone.querySelector("#character-description").innerHTML = character.description;
         clone.querySelector("#character-id").innerHTML = character.id;
         
         target.appendChild(clone);
-        };
-        showCharacter();
+    };
+    
+    characters.forEach((character) => {
+
+        showCharacter(character);
     });
     
     // SINGLE CHARACTER // 
@@ -74,49 +74,52 @@ document.getElementById("delete").addEventListener("click", async() => {
         });
       
     });
-    
+
     // SEARCH BAR //
     
     search.addEventListener("keyup", function() {
         const search = document.getElementById("search");
         const input = search.value;
-        
-        let names =[]
-        characters.forEach(character =>{
-            names.push(character.name) 
-        });
-        // console.log(names)
-        // creer un tableau et y inclure tous les noms des characters présent dans l'API du même nom
-        let result = names.filter((name) => {
-            return name.includes(input)
+    
+        let result = characters.filter((character) => {
+            return character.name.includes(input)
         });
         console.log(result);
         // filtre les noms du tableau creer ci-dessus afin de ne retourner que les noms comportant le ou les carractères
         // rentrés par l'utilisateur dans l'input
+    
         let suggestion = "";
         if (input != ""){
-            result.forEach(resultName=> 
-                suggestion += `<div id ="suggestion">${resultName}</div>`
-                )};
+            result.forEach(resultName=> {
+                
+                suggestion += `<div id ="suggestion">${resultName.name}</div>`
+            });
+        };
                 document.getElementById("suggestion").innerHTML = suggestion;
                 // si l'utilisateur écrit dans l'input, il aura des propositions de characters ayant dans leur nom les 
                 // carractères qu'il aura tapé, celles-ci seront écrites dans l'élément html "suggestion"
-                
-        if (input != ""){
-                const displayCharacters = (characters) => {
-                    // console.log(characters);
-                    let show =characters.map((characters) =>{
-                        return characters; 
-                    })
-                    document.getElementById("target").innerHTML = show;
-                };
-                displayCharacters(result);
-            };
-      
-    });
-            
-            
-            
+        
+        let image =""
+        let nom = "";     
+        let shortDescription = "";       
+        let description = "";    
+        // for(let i =0; i< document.querySelectorAll("li").length; i++){
+        //    document.querySelectorAll("li")[i].style.display = "none" 
+        // };
+        if (character.name.includes(input)){
+          result.forEach(result => {
+              image += `data:image/JPEG;base64,${result.image}`
+              nom += result.name
+              shortDescription += result.shortDescription
+              description += result.description
+          });
+        };
+        document.getElementById("character-img").src = image;
+        document.getElementById("character-name").innerHTML = nom;
+        document.getElementById("character-shortDescription").innerHTML = shortDescription;
+        document.getElementById("character-description").innerHTML = description;
+        });
+    
 })();
 
 
