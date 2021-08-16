@@ -44,6 +44,8 @@
     blah.src = `data:image/JPEG;base64,${character.image}`;
     document.getElementById("name").value = `${character.name}`;
     shortDescription.value = `${character.shortDescription}`;
+    document.querySelector(".ql-editor").innerText =`${character.description}`;
+    document.querySelector("input").value = character.image;
 
 
 
@@ -105,14 +107,6 @@
 
 // udapte 
   
-  
-  
-  
-
-
-  
-
-
 
 const fileInput = document.querySelector("input");
 const saveChangeBtn = document.getElementById('save')
@@ -135,7 +129,7 @@ fileInput.addEventListener("change",  (e) => {
     .replace("data:", "")
     .replace(/^.+,/, "");
     // Put the url into the img atribute 
-    blah.src = reader.result
+    document.getElementById("blah").src = reader.result
     
      document.getElementById('test').innerHTML = `${base64String}` ;
     
@@ -154,7 +148,7 @@ saveChangeBtn.addEventListener("click", async () => {
     let heroDesc=document.querySelector(".ql-editor").innerHTML
     let img = document.getElementById('test').innerHTML 
     
-   
+   console.log('recommence')
    }
    else {
        console.log("non") 
@@ -237,9 +231,12 @@ document.getElementById('shortDescription').addEventListener("input",countSDesc)
 document.querySelectorAll(".ql-editor")[0].addEventListener("input",countDesc)
 
 
+// add new charactere 
 
 
-
+document.getElementById("main-adding").addEventListener("click" ,() => {
+  document.getElementById("card").style.display ="block"
+})
 
 
 
