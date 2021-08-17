@@ -323,6 +323,8 @@ function clear () {
   document.getElementById('shortDescription').value = "" 
   document.querySelector(".ql-editor").innerHTML = ""
   document.getElementById("card").style.display ="none"
+  location.reload();
+
 
 } )
 }
