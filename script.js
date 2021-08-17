@@ -42,13 +42,14 @@
     for (var i = 0, len = document.querySelectorAll("#character-button").length; i < len; i++) {
       document.querySelectorAll("#character-button")[i].parentNode.style.display ="none" 
     }
-
+    document.getElementById("main-adding").style.display ="none"
+    document.getElementById("search").style.display ="none"
       let kik = e.currentTarget.parentNode ; 
       let id = kik.children[4].innerHTML
      console.log(id)
      let response = await fetch(`https://character-database.becode.xyz/characters/${id}`);
      let character = await response.json();
-     document.querySelector(".single-page").style.display ="block"
+     document.querySelector(".single-page").style.display ="flex"
      bla.src = `data:image/JPEG;base64,${character.image}`;
      document.querySelector(".card__title").innerHTML = `${character.name}`;
      document.querySelector(".card__subtitle").innerHTML = `${character.shortDescription}`;
@@ -79,7 +80,7 @@
     document.getElementById("udapte").addEventListener("click",() => {
       document.querySelector(".single-page").style.display ="none";
       console.log(character.name, character.description, `data:image/JPEG;base64,${character.image}` ,character.shortDescription)
-      document.getElementById("card").style.display ="block"
+      document.getElementById("card").style.display ="flex"
       blah.src = `data:image/JPEG;base64,${character.image}`;
       document.getElementById("name").value = `${character.name}`;
       shortDescription.value = `${character.shortDescription}`;
@@ -380,11 +381,12 @@ document.querySelectorAll(".ql-editor")[0].addEventListener("input",countDesc)
 
 
 document.getElementById("main-adding").addEventListener("click" ,() => {
-  document.getElementById("card").style.display ="block"
+  document.getElementById("card").style.display ="flex"
   for (var i = 0, len = document.querySelectorAll("#character-button").length; i < len; i++) {
     document.querySelectorAll("#character-button")[i].parentNode.style.display ="none" 
   }
   document.getElementById("main-adding").style.display ="none"
+  document.getElementById("search").style.display ="none"
   post ()
   clear() 
 })

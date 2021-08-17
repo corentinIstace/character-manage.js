@@ -1,0 +1,252 @@
+// ----------------------------------------single-page---------------------------
+
+#header {
+    font-family: $permanent;
+    color :white ;
+    h1 {
+        margin-left : 4rem ;
+    }
+    
+}
+
+
+.single-page {
+
+    background-color : $grey; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0 8rem 0;
+    border-radius: 36px;
+    width: 90%;
+    margin: auto;
+    .card__body {
+        text-align: center;
+        h2 {
+            font-family: $permanent;
+            color : white;
+            padding : 1rem 0 ;
+        }
+        h3 {
+            color : $Dark-grayish-blue ; 
+            font-size : 1rem;
+            font-style: italic;
+            padding : 1rem 0 ;
+        }
+        .card__copy {
+            font-size : 1.2rem;
+            color : white;
+            padding : 1rem 0 4rem 0 ;
+            
+        } 
+    }
+        .card__header {
+            border-radius :50% ; 
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            img {
+                width: 100px;
+                height: auto;
+            }
+        }
+
+        .card__footer {
+            .card__actions {
+                 display :flex;
+                 justify-content: space-around;
+                 width: 20rem;   
+            }
+            #udapte {
+                background-color: #4d7dfc;
+                text-decoration: none;
+                border: none;
+                border-radius: 5px;
+                padding: 0.5rem 0.8rem;
+                color: white;
+                font-family: $roboto;
+                font-style: italic;
+                cursor : pointer ;
+            }
+            #delete-single{
+                border-color :#aa3930;
+                font-family: $roboto;
+                font-style: italic;
+                background-color: transparent;
+                color : #aa3930;
+                border-radius: 5px;
+                padding: 0.5rem 0.8rem;
+                border : 1px solid #aa3930;
+                cursor : pointer ; 
+            } 
+
+        }
+
+}
+
+
+// -------------------------------------- udapte page ------------------------------------
+
+#card {
+    background-color :#343434; 
+    align-items: center;
+    padding: 5rem 0 8rem 0;
+    border-radius: 36px;
+    width: 90%;
+    margin: auto;
+    
+    .input-group {
+        position :relative;
+        .ql-toolbar{
+           
+                .ql-formats{
+            background-color: #f5f5f7;
+            margin-right : 0 ;
+            padding : 0.1rem 0 0 0;
+
+        } 
+        :first-child{
+            
+          border-radius: 10px 0 0 13px;
+
+        }
+        :nth-child(4){
+            border-radius: 0px 13px 13px 0px;
+            padding-right: 1rem;
+        }
+        }
+   
+    }
+    input,textarea  {
+        width: 51rem;
+      }
+      #name {
+        height : 2rem;
+        border-radius: 4px;
+        background-color:#727071; 
+        border : 1px solid white ;   
+        color :white ;
+        font-family: $permanent;
+        font-size : 2rem;
+        padding: 4px 2px 2px 12px;
+      }
+      #shortDescription{
+        height : 1.5rem;
+        background-color:#727071;
+        border : 1px solid white;
+        color : $Dark-grayish-blue ;  
+        font-size : 1rem;
+        margin: 1rem 0;
+        padding: 4px 2px 2px 12px;
+
+        
+      }
+      #shortdesctLen{
+        position: absolute;
+        left: 42.5rem;
+        bottom: 13.8rem;
+        font-size: 0.7rem;
+        color: white;
+        padding: 4px 16px;
+       
+      }
+      #desctLen {
+        position: absolute;
+        left: 47rem;
+        bottom: 0.6rem;
+        font-size: 0.7rem;
+        color: white;
+        z-index: 1;
+      }
+      #contentLen {
+        position: absolute;
+        left: 44rem;
+        bottom: 17.8rem;
+        font-size: 0.7rem;
+        color: white;
+      }
+      textarea {
+          resize: none;
+          border-radius: 4px;
+      }
+    flex-direction: column;
+    align-items: center;
+    .card__header {
+        border-radius :50% ; 
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        img {
+            width: 100px;
+            height: auto;
+        }
+    }
+
+#editor-container{
+    width: 53rem;
+    height : 10rem;
+    background-color: #727071;
+    border-radius: 0px 0px 9px 9px;
+   
+}
+
+.ql-toolbar {
+    width: 53rem;
+    border-radius: 16px 15px 16px 15px;
+    padding : 0.1rem 0  0 0 ;
+    background: grey;
+    
+    z-index: 1;
+    position: relative;
+
+
+
+}
+.bck {
+    position: absolute;
+    background-color: #727071;
+    width: 52.8em;
+    height: 2rem;
+    top: 5rem;
+    border: 1px solid white;
+    border-bottom: transparent;
+    border-radius: 0rem;
+    z-index: 0;
+    border-radius: 0;
+    top: 9rem;
+
+}
+
+
+.card__actions{
+    margin-top : 3rem;
+    width : 20rem ;
+    display : flex ;
+    justify-content: space-around;
+    flex-direction: row;
+    #save{
+        background-color: #4d7dfc;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 0.8rem;
+        color: white;
+        font-family: $roboto;
+        font-style: italic;
+        cursor : pointer ;
+    }
+    #delete {
+        border-color :#aa3930;
+        font-family: $roboto;
+        font-style: italic;
+        background-color: transparent;
+        color : #aa3930;
+        border-radius: 5px;
+        padding: 0.5rem 0.8rem;
+        border : 1px solid #aa3930;
+        cursor : pointer ; 
+    }
+}
+}
