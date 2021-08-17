@@ -645,6 +645,7 @@ header #search {
 }
 #container #character-shortDescription {
   font-family: "Roboto", sans-serif;
+  color: #818498;
   font-size: 1.3em;
   height: 60px;
   overflow: hidden;
