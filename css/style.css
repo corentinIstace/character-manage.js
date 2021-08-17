@@ -662,6 +662,9 @@ header #search {
   border-radius: 25px;
   align-items: flex-start;
   text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 li {
@@ -674,11 +677,14 @@ li {
   background-color: #4B7CFB;
   color: white;
   font-size: 1.3em;
-  width: 250px;
-  height: 30px;
+  padding: 1rem 3.5rem 1rem 3.5rem;
   border: 1px transparent solid;
   border-radius: 10px;
-  box-shadow: 5px 10px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 5px 5px 26px 0px rgba(0, 0, 0, 0.58);
+  box-shadow: 5px 5px 26px 0px rgba(0, 0, 0, 0.58);
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 #loader {
