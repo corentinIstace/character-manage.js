@@ -436,6 +436,24 @@ body {
   flex-direction: column;
   align-items: center;
 }
+#card #preview {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+}
+#card #imgInp {
+  position: relative;
+  margin: 1rem auto;
+  width: 15rem;
+  visibility: hidden;
+}
+#card label {
+  margin-right: 15rem;
+  color: white;
+  font-family: "Roboto";
+  font-style: italic;
+  cursor: pointer;
+}
 #card .input-group {
   position: relative;
 }
@@ -501,15 +519,21 @@ body {
   border-radius: 4px;
 }
 #card .card__header {
+  border: 2px solid white;
   border-radius: 50%;
   overflow: hidden;
   width: 100px;
   height: 100px;
   margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #card .card__header img {
   width: 100px;
-  height: auto;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
 }
 #card #editor-container {
   width: 53rem;
@@ -645,6 +669,7 @@ li {
 
 #main-adding {
   margin-bottom: 50px;
+  margin-left: 43vw;
   background-color: #4B7CFB;
   color: white;
   font-size: 1.3em;

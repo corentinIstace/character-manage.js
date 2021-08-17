@@ -322,6 +322,8 @@ function clear () {
   document.getElementById('shortDescription').value = "" 
   document.querySelector(".ql-editor").innerHTML = ""
   document.getElementById("card").style.display ="none"
+  location.reload();
+
 
 } )
 }
@@ -376,6 +378,8 @@ document.getElementById('shortDescription').addEventListener("input",countSDesc)
 document.querySelectorAll(".ql-editor")[0].addEventListener("input",countDesc)
 
 
+
+
 // add new charactere 
 
 
@@ -388,14 +392,13 @@ document.getElementById("main-adding").addEventListener("click" ,() => {
   document.getElementById("search").style.display ="none"
   post ()
   clear() 
+
 })
 
 
 
 
-
   
- 
 
  
 
