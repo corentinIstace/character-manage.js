@@ -49,6 +49,7 @@
             img {
                 width: 100px;
                 height: auto;
+                height: 100px;
             }
         }
 
@@ -319,6 +320,19 @@ header {
     overflow: hidden;
     border: 1px solid #363333;
     border-radius: 30px;
+    -webkit-box-shadow: 5px 5px 26px 0px rgba(0,0,0,0.58); 
+    box-shadow: 5px 5px 26px 0px rgba(0,0,0,0.58);
+    -webkit-transition: all 1.2s 0.1s ease;
+    -moz-transition: all 1.2s 0.1s ease;
+    -o-transition: all 1.2s 0.1s ease;
+    transition: all 1.2s 0.1s ease;
+    &:hover {
+       background-color: #585454;
+       position : relative ;
+       height: 400px;
+       width: 300px;
+
+    }
     img{
         width: 100px;
         height: 100px;
