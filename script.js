@@ -95,54 +95,46 @@
     
   }); 
 
-
-  
-   
-  
-       
-
-
-
-
-
-
     // SEARCH BAR //
     
     search.addEventListener("keyup", function() {
-    const search = document.getElementById("search");
-    const input = search.value;
-    
-    let names =[]
-    characters.forEach(character =>{
-    names.push(character.name) 
-    });
-    // console.log(names)
-    // creer un tableau et y inclure tous les noms des characters présent dans l'API du même nom
-    let result = names.filter((name) => {
-        return name.includes(input)
-    });
-    console.log(result);
-    // filtre les noms du tableau creer ci-dessus afin de ne retourner que les noms comportant le ou les carractères
-    // rentrés par l'utilisateur dans l'input
-    let suggestion = "";
-    if (input != ""){
-    result.forEach(resultName=> 
-    suggestion += `<div id ="suggestion">${resultName}</div>`
-    )};
-    document.getElementById("suggestion").innerHTML = suggestion;
-    // si l'utilisateur écrit dans l'input, il aura des propositions de characters ayant dans leur nom les 
-    // carractères qu'il aura tapé, celles-ci seront écrites dans l'élément html "suggestion"
-    if (input != ""){
-        const displayCharacters = (characters) => {
-            console.log(characters);
-            let show =characters.map((characters) =>{
-                return characters; 
-            })
-            document.getElementById("target").innerHTML = show;
-        }
-        displayCharacters(result);
-    }
-    
+      target.innerHTML = "";
+      const search = document.getElementById("search");
+      const input = search.value;
+
+      let result = characters.filter((character) => {
+          return character.name.includes(input)
+      });
+      // console.log(result);
+      // filtre les noms du tableau creer ci-dessus afin de ne retourner que les noms comportant le ou les carractères
+      // rentrés par l'utilisateur dans l'input
+
+      let suggestion = "";
+      if (input != ""){
+          result.forEach(resultName=> {
+              
+              suggestion += `<div id ="suggestion">${resultName.name}</div>`
+          });
+      };
+              document.getElementById("suggestion").innerHTML = suggestion;
+              // si l'utilisateur écrit dans l'input, il aura des propositions de characters ayant dans leur nom les 
+              // carractères qu'il aura tapé, celles-ci seront écrites dans l'élément html "suggestion"
+  const displayCharacters = (result) => {
+    // console.log(characters);
+    this.result = result;
+    result.forEach((result) =>{        
+      let template = document.getElementById('tpl-character')
+      let templateClone = template.content.cloneNode(true);
+         
+          templateClone.getElementById("character-img").src = `data:image/JPEG;base64,${result.image}`;
+          templateClone.getElementById("character-name").innerHTML = result.name;
+          templateClone.getElementById("character-shortDescription").innerHTML = result.shortDescription;
+          templateClone.getElementById("character-description").innerHTML = result.description;
+          target.append(templateClone)
+          return result; 
+      })   
+  };
+  displayCharacters(result);
     });
     
     
