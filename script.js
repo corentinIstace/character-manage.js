@@ -79,13 +79,14 @@ document.getElementById("delete").addEventListener("click", async() => {
     // SEARCH BAR //
     
     search.addEventListener("keyup", function() {
+        target.innerHTML = "";
         const search = document.getElementById("search");
         const input = search.value;
 
         let result = characters.filter((character) => {
             return character.name.includes(input)
         });
-        console.log(result);
+        // console.log(result);
         // filtre les noms du tableau creer ci-dessus afin de ne retourner que les noms comportant le ou les carractères
         // rentrés par l'utilisateur dans l'input
 
@@ -99,48 +100,25 @@ document.getElementById("delete").addEventListener("click", async() => {
                 document.getElementById("suggestion").innerHTML = suggestion;
                 // si l'utilisateur écrit dans l'input, il aura des propositions de characters ayant dans leur nom les 
                 // carractères qu'il aura tapé, celles-ci seront écrites dans l'élément html "suggestion"
-        // let image =""
-        // let nom = "";     
-        // let shortDescription = "";       
-        // let description = "";    
-        // // for(let i =0; i< document.querySelectorAll("li").length; i++){
-        // //    document.querySelectorAll("li")[i].style.display = "none" 
-        // // };
-        // if (input != ""){
-        //     result.forEach(result => {
-        //         image += `data:image/JPEG;base64,${result.image}`
-        //         nom += result.name
-        //         shortDescription += result.shortDescription
-        //         description += result.description
-        //     });
-        // };
-        // document.getElementById("character-img").src = image;
-        // document.getElementById("character-name").innerHTML = nom;
-        // document.getElementById("character-shortDescription").innerHTML = shortDescription;
-        // document.getElementById("character-description").innerHTML = description;
-
-        let image =""
-        let nom = "";     
-        let shortDescription = "";       
-        let description = "";
-        const displayCharacters = () => {
-            // console.log(characters);
-            let show =result.map((result) =>{
-                image += `data:image/JPEG;base64,${result.image}`
-                nom += result.name
-                shortDescription += result.shortDescription
-                description += result.description
-                return result; 
-            })
-            document.getElementById("target").innerHTML = "blabla"  ;
-            document.getElementById("character-img").src = image;
-            document.getElementById("character-name").innerHTML = nom;
-            document.getElementById("character-shortDescription").innerHTML = shortDescription;
-            document.getElementById("character-description").innerHTML = description;
-        };
-        displayCharacters(result);
-        });
+    const displayCharacters = (result) => {
+      // console.log(characters);
+      this.result = result;
+      result.forEach((result) =>{        
+        let template = document.getElementById('tpl-character')
+        let templateClone = template.content.cloneNode(true);
+           
+            templateClone.getElementById("character-img").src = `data:image/JPEG;base64,${result.image}`;
+            templateClone.getElementById("character-name").innerHTML = result.name;
+            templateClone.getElementById("character-shortDescription").innerHTML = result.shortDescription;
+            templateClone.getElementById("character-description").innerHTML = result.description;
+            target.append(templateClone)
+            return result; 
+        })   
+    };
+    displayCharacters(result);
+      });
     })();
+    
 
 
 
