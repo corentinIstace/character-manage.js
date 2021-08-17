@@ -377,6 +377,8 @@ document.getElementById('shortDescription').addEventListener("input",countSDesc)
 document.querySelectorAll(".ql-editor")[0].addEventListener("input",countDesc)
 
 
+
+
 // add new charactere 
 
 
@@ -389,14 +391,13 @@ document.getElementById("main-adding").addEventListener("click" ,() => {
   document.getElementById("search").style.display ="none"
   post ()
   clear() 
+
 })
 
 
 
 
-
   
- 
 
  
 
