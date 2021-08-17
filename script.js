@@ -147,7 +147,6 @@
     
     
 })();
-// SINGLE CHARACTER // 
 
 
 
@@ -249,7 +248,7 @@ saveChangeBtn.addEventListener("click", async () => {
        let heroShortDesc = document.getElementById('shortDescription').value
        let heroDesc=document.querySelector(".ql-editor").innerHTML
        let img = document.getElementById('test').innerHTML 
-      let id = document.getElementById("tester").innerHTML
+       let id = document.getElementById("tester").innerHTML
                         
           const data = { description:`${heroDesc}`, shortDescription :`${heroShortDesc}`   ,name:`${heroName}` ,   image : `${img}` };
           console.log(data) 
