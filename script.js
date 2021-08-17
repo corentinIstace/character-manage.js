@@ -17,7 +17,6 @@
         clone.querySelector("#character-img").src = `data:image/JPEG;base64,${character.image}`;
         clone.querySelector("#character-name").innerHTML = character.name;
         clone.querySelector("#character-shortDescription").innerHTML = character.shortDescription;
-        clone.querySelector("#character-description").innerHTML = character.description;
         clone.querySelector("#character-id").innerHTML = character.id;
         
         target.appendChild(clone);

@@ -18,19 +18,21 @@
         <h1>Character Manager</h1>
         <input type="search" id="search" placeholder="Search Character">
         <div id="suggestion"></div>
-        <hr color="white" width="90%" >
     </header>
+    <hr color="white" width="90%">
     <main id ="main">
         <article class="card">
             <template id="tpl-character">
+                <div id="container">
+                    <img src="" id="character-img">
+                    <h4 id="character-name"></h4>
+                    <p id="character-shortDescription"></p>
+                    <p id="character-description"></p>
+                    <p id="character-id"></p>
+                    <button id="character-button">See character</button>
+                    </li>
+                </div>
                 <li>
-                <img src="" id="character-img">
-                <h4 id="character-name"></h4>
-                <p id="character-shortDescription"></p>
-                <p id="character-description"></p>
-                <p id="character-id"></p>
-                <button id="character-button">See character</button>
-                </li>
             </template>
         </article>
         <article>
