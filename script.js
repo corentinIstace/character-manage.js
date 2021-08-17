@@ -398,7 +398,12 @@ document.getElementById("main-adding").addEventListener("click" ,() => {
 
 
 
+function loadfun () {
+  let load = document.getElementById("loader");
 
+  load.style.display ="none"
+
+}
   
 
  

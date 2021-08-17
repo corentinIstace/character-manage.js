@@ -13,13 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>Character-manager JS</title>
 </head>
-<body>
+<body onload="loadfun()">
+  <div id="loader"></div>
     <header id ="header">
         <h1>Character Manager</h1>
         <input type="search" id="search" placeholder="Search Character">
         <div id="suggestion"></div>
-        <hr color="white" width="90%" >
-    </header>
+    </header> 
+    <hr color="white" width="90%" >
     <main id ="main">
         <article class="card">
             <template id="tpl-character">
