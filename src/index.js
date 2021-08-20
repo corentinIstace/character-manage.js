@@ -1,7 +1,19 @@
+// import createCharacter from "./createCharacter.js";
+import loadPage from "./loader.js";
+import searchBar from "./searchBar.js";
+import put from "./put-method.js";
+import post from "./post-method.js";
+import adding from "./adding.js";
+import deleted from "./deleted.js";
+import clear from "./clear.js"
+
+// --------------------------------- WINDOW LOADER -------------------------------------- //
+
+loadPage ();
+
 ( async () => {
     
 // --------------------------------- CHARACTER template -------------------------------------- //
-  
   const response = await fetch("https://character-database.becode.xyz/characters");
   const characters = await response.json();
   // console.log(characters);
@@ -19,9 +31,8 @@
       
       target.appendChild(clone); 
     }  
-    showCharacter()
-  });
-
+    showCharacter();
+    })
 // --------------------------------- CHARACTER BUTTONS -------------------------------------- //
   function addEventListenerList(list, event, fn) {
     for (var i = 0, len = list.length; i < len; i++) {
@@ -78,7 +89,7 @@
       document.querySelector(".ql-editor").innerHTML =`${character.description}`;
       document.querySelector("input").value = character.image;
       document.getElementById("tester").innerHTML  = id;
-      };
+    };
     updateCharacter()
     put () 
     deleted ()
@@ -87,44 +98,8 @@
 
 // --------------------------------- SEARCH BAR -------------------------------------- //
   
-  search.addEventListener("keyup", function() {
-    target.innerHTML = "";
-    const search = document.getElementById("search");
-    const input = search.value;
+  searchBar();
 
-    let result = characters.filter((character) => {
-        return character.name.includes(input)
-    });
-    // console.log(result);
-    // filtre les noms du tableau creer ci-dessus afin de ne retourner que les noms comportant le ou les carractères
-    // rentrés par l'utilisateur dans l'input
-
-    // let suggestion = "";
-    // if (input != ""){
-    //     result.forEach(resultName=> {   
-    //         suggestion += `<div id ="suggestion">${resultName.name}</div>`
-    //     });
-    // };
-    // document.getElementById("suggestion").innerHTML = suggestion;
-      // si l'utilisateur écrit dans l'input, il aura des propositions de characters ayant dans leur nom les 
-      // carractères qu'il aura tapé, celles-ci seront écrites dans l'élément html "suggestion"
-
-      // console.log(characters);
-      result.forEach((result) =>{             
-        const displayResult = () => {
-          let template = document.getElementById('tpl-character')
-          let templateClone = template.content.cloneNode(true);
-       
-          templateClone.getElementById("character-img").src = `data:image/JPEG;base64,${result.image}`;
-          templateClone.getElementById("character-name").innerHTML = result.name;
-          templateClone.getElementById("character-shortDescription").innerHTML = result.shortDescription;
-          templateClone.getElementById("character-description").innerHTML = result.description;
-          target.append(templateClone);
-      };
-      displayResult()
-    });   
-  });
- 
 })();
 
 // --------------------------------- UPDATE -------------------------------------- //
@@ -157,116 +132,19 @@ fileInput.addEventListener("change",  (e) => {
 });
 // --------------------------------- SAVE CHANGE BUTTON PUT METHOD -------------------------------------- //
 
-function put () {
-
-  saveChangeBtn.addEventListener("click", async () => {
-    
-       
-         console.log("put") 
-         
-         let heroName = document.getElementById('name').value
-         let heroShortDesc = document.getElementById('shortDescription').value
-         let heroDesc=document.querySelector(".ql-editor").innerHTML
-         let img = blah.src .replace("data:", "")
-         .replace(/^.+,/, "");
-
-        let id = document.getElementById("tester").innerHTML
-                          
-            const data = {description:`${heroDesc}`, shortDescription:`${heroShortDesc}`, name:`${heroName}`, image :`${img}`};
-            // console.log(data) 
-            let response = await fetch(`https://character-database.becode.xyz/characters/${id}`,{ 
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-                });
-            let jsonResp = await response.json();  
-            console.log(jsonResp) 
-            location.reload();   
-  });
-};
+put();
   
 // --------------------------------- SAVE CHANGE BUTTON POST METHOD -------------------------------------- //
 
-function post () {
-
-  saveChangeBtn.addEventListener("click", async () => {
-    let heroName = document.getElementById('name').value
-    let heroShortDesc = document.getElementById('shortDescription').value
-    let heroDesc=document.querySelector(".ql-editor").innerHTML
-    let img = document.getElementById('test').innerHTML 
-
-    if (heroName.innerHTML == ""  ||  heroShortDesc.value == "" || heroDesc.value == "" || img.innerHTML == "") {
-  
-      console.log('recommence')
-    }
-    else {
-   
-    //  console.log("non") 
-     let heroName = document.getElementById('name').value
-     let heroShortDesc = document.getElementById('shortDescription').value
-     let heroDesc=document.querySelector(".ql-editor").innerHTML
-     let img = document.getElementById('test').innerHTML 
-                      
-        const data = { description:`${heroDesc}`, shortDescription :`${heroShortDesc}`   ,name:`${heroName}` ,   image : `${img}` };
-        console.log(data) 
-        let response = await fetch(`https://character-database.becode.xyz/characters`,{ 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-            });
-        let jsonResp = await  response.json();  
-        console.log(jsonResp) 
-        location.reload();
- }
-  })
-};
+post();
 
 // --------------------------------- DELETED CHARACTER -------------------------------------- //
 
-function deleted () {
-  document.getElementById("delete").addEventListener("click",async ()=> {
-    // console.log("delete") 
-         
-    let heroName = document.getElementById('name').value
-    let heroShortDesc = document.getElementById('shortDescription').value
-    let heroDesc=document.querySelector(".ql-editor").innerHTML
-    let img = blah.src .replace("data:", "")
-    .replace(/^.+,/, "");
-    let id = document.getElementById("tester").innerHTML
-                   
-    const data = { description:`${heroDesc}`, shortDescription:`${heroShortDesc}`, name:`${heroName}`, image:`${img}`};
-    //  console.log(data) 
-    let response = await fetch(`https://character-database.becode.xyz/characters/${id}`,{ 
-        method: 'DELETE',
-        headers: {
-           'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
-    let jsonResp = await response.json();  
-     console.log(jsonResp) 
-    location.reload();    
-  });
-};
+deleted();
 
 // --------------------------------- REINISIALISATION OF CHARACTER -------------------------------------- //
  
-function clear () {
-  document.getElementById("delete").addEventListener("click",()=> {
-
-    fileInput.value ="";
-    blah.src ="#"
-    document.getElementById('name').value = "" 
-    document.getElementById('shortDescription').value = "" 
-    document.querySelector(".ql-editor").innerHTML = ""
-    document.getElementById("card").style.display ="none"
-    location.reload();
-  })
-};
+clear();
 
 // --------------------------------- MARKDOW BAR -------------------------------------- //
 
@@ -308,21 +186,4 @@ document.querySelectorAll(".ql-editor")[0].addEventListener("input",countDescrip
 
 // --------------------------------- ADDING NEW CHARACTER -------------------------------------- //
 
-document.getElementById("main-adding").addEventListener("click" ,() => {
-  document.getElementById("card").style.display ="flex"
-  for (var i = 0, len = document.querySelectorAll("#character-button").length; i < len; i++) {
-    document.querySelectorAll("#character-button")[i].parentNode.style.display ="none" 
-  }
-  document.getElementById("main-adding").style.display ="none"
-  document.getElementById("search").style.display ="none"
-  post ()
-  clear() 
-
-})
-
-// --------------------------------- WINDOW LOADER -------------------------------------- //
-
-function loadPage () {
-  let load = document.getElementById("loader");
-    load.style.display ="none";
-};
+adding();
