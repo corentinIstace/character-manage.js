@@ -7,11 +7,11 @@ The objective was to create a static site for a DJ, based on reference photos, r
 
 It's create for my BeCode formation for learning the principles of:
 
-    HTML
-    SASS
-    Responsive web design
-    Javascript
-    Using GIT and Github
+    - HTML
+    - SASS
+    - Responsive web design
+    - Javascript
+    - Using GIT and Github
 
 Objectives
 
@@ -20,14 +20,14 @@ For this exercice, it was asking to us to create an app that will be able to vie
 After that we have to use responsive design and to push it on Github.
 HTML:
 
-    write HTML proprely,
-    make the result looks like the picture,
-    respected the HTML sementic elements
+    - write HTML proprely,
+    - make the result looks like the picture,
+    - respected the HTML sementic elements
 
 SASS:
 
-    write SASS and link it with the css,
-    separate elements into different blocks,
+    - write SASS and link it with the css,
+    - separate elements into different blocks,
 
 Responsive web design:
 
@@ -36,11 +36,11 @@ Responsive web design:
 Javascript: 
 
     
-    Use best JS practices
-    Read documentation and test a REST API
-    Use a REST API with HTTP requests
-    Create a typical asynchronous flow : send asynchronous (promises or async/await) requests to a remote server and process the results
-    DOM manipulation: changing the DOM based on results of HTTP requests
+    - Use best JS practices
+    - Read documentation and test a REST API
+    - Use a REST API with HTTP requests
+    - Create a typical asynchronous flow : send asynchronous (promises or async/await) requests to a remote server and process the results
+    - DOM manipulation: changing the DOM based on results of HTTP requests
 
 
 Git and Github:
